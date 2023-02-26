@@ -1,5 +1,6 @@
 package tn.esprit.ski.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -22,6 +23,7 @@ public class Piste {
     Couleur couleur;
     int longeur;
     int pente;
+    @JsonIgnore
     @ManyToMany(mappedBy = "pistes")
     List<Skieur> skieurs;
 
