@@ -4,8 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.ski.Services.AbonService;
 import tn.esprit.ski.entities.Abonnement;
+import tn.esprit.ski.entities.TypeAbonnement;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/abonnement")
@@ -32,6 +35,17 @@ public class AboController {
     @DeleteMapping("/{id}")
     public void remove(@PathVariable long id){
         abonService.remove(id);
+    }
+    @GetMapping("/{typeAbo}")
+    public Set<Abonnement> findByTypeAbon(@PathVariable TypeAbonnement typeAbonnement){
+        return abonService.findByTypeAbon(typeAbonnement);}
+    @GetMapping("/subord/{typeabon1}")
+    public Set<Abonnement> getSubscriptionByType(@PathVariable TypeAbonnement typeAbonnement){
+        return abonService.getSubscriptionByType(typeAbonnement);
+    }
+    @GetMapping({"/abonbydate/{datedeb}/{datefin}"})
+    public  List<Abonnement> retrieveSubscriptionsByDates(@PathVariable LocalDate startDate,@PathVariable LocalDate endDate){
+        return abonService.retrieveSubscriptionsByDates(startDate,endDate);
     }
 
 }

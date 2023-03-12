@@ -6,6 +6,7 @@ import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -23,9 +24,9 @@ public class Skieur {
     LocalDate dateNaissance;
     String Ville;
     @OneToMany(mappedBy = "skieur")
-    List<Inscription> inscriptions;
+    Set<Inscription> inscriptions;
     @ManyToMany
-    List<Piste> pistes;
+    Set<Piste> pistes;
     @OneToOne
     Abonnement abonnements;
 }

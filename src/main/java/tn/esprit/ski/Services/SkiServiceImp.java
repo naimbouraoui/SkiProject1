@@ -11,10 +11,12 @@ import tn.esprit.ski.Repositories.SkiRepository;
 import tn.esprit.ski.entities.Abonnement;
 import tn.esprit.ski.entities.Piste;
 import tn.esprit.ski.entities.Skieur;
+import tn.esprit.ski.entities.TypeAbonnement;
 
 import javax.print.attribute.standard.MediaSize;
 import java.io.Console;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class SkiServiceImp implements SkiService{
@@ -54,7 +56,7 @@ public class SkiServiceImp implements SkiService{
         Piste piste=pisteRepository.findById(numPiste).orElse(null);
         Assert.notNull(piste,"piste not found");
             //traitement
-            List<Piste> pistes = skieur.getPistes();
+            Set<Piste> pistes = skieur.getPistes();
             pistes.add(piste);
             skieur.setPistes(pistes);
             //skieur.getPistes().add(skieur); remplace les 3 lighnes précédents.
@@ -68,4 +70,32 @@ public class SkiServiceImp implements SkiService{
         skieur.setAbonnements(abonnement);
         return skiRepository.save(skieur);
     }
+    @Override
+    public List<Skieur> retrieveSkiersBySubscriptionType(TypeAbonnement typeAbonnement) {
+        return skiRepository.findByAbonnementTypeAbon(typeAbonnement);
+    }
+
+
+    //  @Override
+    //  public List<Skieur> retrieveSkiersBySubscriptionType(TypeAbonnement typeAbonnement) {
+    //      List<Skieur> list = new ArrayList<>();
+    //      for (Skieur s:getAll()) {
+    //          if (s.getAbonnement().getTypeAbon().equals(typeAbonnement)) {
+    //              list.add(s);
+    //          }
+    //      }
+    //      return list;
+    //  }
+
+    // @Override
+    // public Skieur addSkierAndAssignToCourse(Skieur skieur,Long numCours, Long numInscription) {
+    //     Cours cours = coursRepository.findById(numCours).orElse(null);
+    //     Inscription inscription = inscriptionRepository.findById(numInscription).orElse(null);
+    //     if(cours!=null && inscription!=null){ add(skieur);}
+    //     List<Inscription> inscriptions = new ArrayList<Inscription>();
+    //     coursList.add(cours);
+    //     cours.setInscriptions(inscriptions);
+
+    //     return null;
+    // }
 }

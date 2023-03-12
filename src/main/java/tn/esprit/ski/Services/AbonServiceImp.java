@@ -4,8 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.ski.Repositories.AbonnementRepository;
 import tn.esprit.ski.entities.Abonnement;
+import tn.esprit.ski.entities.TypeAbonnement;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class AbonServiceImp implements AbonService {
@@ -31,6 +34,21 @@ public class AbonServiceImp implements AbonService {
     @Override
     public void remove(long id){
         abonnementRepository.deleteById(id);
+    }
+    @Override
+    public Set<Abonnement> findByTypeAbon(TypeAbonnement typeAbonnement) {
+        return abonnementRepository.findByTypeAbon(typeAbonnement);
+    }
+
+    @Override
+    public Set<Abonnement> getSubscriptionByType(TypeAbonnement typeAbonnement) {
+        return abonnementRepository.findByTypeAbonOrderByDateDebut(typeAbonnement);
+    }
+
+    @Override
+    public List<Abonnement> retrieveSubscriptionsByDates(LocalDate startDate, LocalDate endDate) {
+        return abonnementRepository.findByAAndDateDebutBetween(startDate,endDate);
+
     }
 
 }
