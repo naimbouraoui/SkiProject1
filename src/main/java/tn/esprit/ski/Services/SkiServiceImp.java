@@ -14,6 +14,7 @@ import tn.esprit.ski.entities.Skieur;
 import tn.esprit.ski.entities.TypeAbonnement;
 
 import javax.print.attribute.standard.MediaSize;
+import javax.transaction.Transactional;
 import java.io.Console;
 import java.util.List;
 import java.util.Set;
@@ -28,9 +29,21 @@ public class SkiServiceImp implements SkiService{
     private AbonnementRepository abonnementRepository;
 
     @Override
+    @Transactional
     public void add(Skieur s) {
-        skiRepository.save(s);
-    }
+            //Traitement quelconque
+            //Abonnement abonAjouter = s.getAbonnement();
+            //Abonnement addedAbon = abonnementRepository.save(abonAjouter);
+            //Skieur addedSkieur = skieurRepository.save(s);
+            //addedSkieur.setAbonnement(addedAbon);
+            //skieurRepository.save(addedSkieur);
+            skiRepository.save(s);
+            //Abonnement abonAjouter1 = s.getAbonnement();
+            //abonnementRepository.saveAndFlush(abonAjouter1);
+            //skieurRepository.saveAndFlush(s);
+            //s.setAbonnement(abonAjouter1);
+            //skieurRepository.save(s);
+        }
 
     @Override
     public Skieur update(Skieur s) {return skiRepository.save(s);}
@@ -72,7 +85,7 @@ public class SkiServiceImp implements SkiService{
     }
     @Override
     public List<Skieur> retrieveSkiersBySubscriptionType(TypeAbonnement typeAbonnement) {
-        return skiRepository.findByAbonnementTypeAbon(typeAbonnement);
+        return skiRepository.findByAbonnementsTypeAbon(typeAbonnement);
     }
 
 

@@ -11,6 +11,6 @@ import java.util.Set;
 public interface AbonnementRepository extends CrudRepository<Abonnement,Long> {
     Set<Abonnement> findByTypeAbon(TypeAbonnement typeAbonnement);
     Set<Abonnement> findByTypeAbonOrderByDateDebut(TypeAbonnement typeAbonnement);
-    List<Abonnement> findByAAndDateDebutBetween(LocalDate startDate, LocalDate endDate);
+    List<Abonnement> findByDateDebutBetween(LocalDate startDate, LocalDate endDate);
 
 }

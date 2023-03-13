@@ -1,6 +1,7 @@
 package tn.esprit.ski.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.ski.Services.AbonService;
 import tn.esprit.ski.entities.Abonnement;
@@ -43,8 +44,8 @@ public class AboController {
     public Set<Abonnement> getSubscriptionByType(@PathVariable TypeAbonnement typeAbonnement){
         return abonService.getSubscriptionByType(typeAbonnement);
     }
-    @GetMapping({"/abonbydate/{datedeb}/{datefin}"})
-    public  List<Abonnement> retrieveSubscriptionsByDates(@PathVariable LocalDate startDate,@PathVariable LocalDate endDate){
+    @GetMapping({"/{startDate}/{endDate}"})
+    public  List<Abonnement> retrieveSubscriptionsByDates(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate){
         return abonService.retrieveSubscriptionsByDates(startDate,endDate);
     }
 

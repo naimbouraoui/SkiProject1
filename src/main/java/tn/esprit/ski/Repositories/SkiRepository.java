@@ -9,6 +9,6 @@ import tn.esprit.ski.entities.TypeCours;
 import java.util.List;
 
 public interface SkiRepository extends CrudRepository<Skieur,Long>{
-    List<Skieur> findByAbonnementTypeAbon(TypeAbonnement typeAbonnement); //select * from Skieur
+    List<Skieur> findByAbonnementsTypeAbon(TypeAbonnement typeAbonnement); //select * from Skieur
     List<Skieur> findByInscriptionsCoursTypeCours(TypeCours typeCours);
 }

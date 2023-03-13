@@ -47,7 +47,7 @@ public class AbonServiceImp implements AbonService {
 
     @Override
     public List<Abonnement> retrieveSubscriptionsByDates(LocalDate startDate, LocalDate endDate) {
-        return abonnementRepository.findByAAndDateDebutBetween(startDate,endDate);
+        return abonnementRepository.findByDateDebutBetween(startDate,endDate);
 
     }
 
