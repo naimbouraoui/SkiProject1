@@ -1,5 +1,6 @@
 package tn.esprit.ski.Controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.ski.Services.CoursService;
@@ -9,9 +10,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/cours")
+@RequiredArgsConstructor
 public class CoursController {
-    @Autowired
-    private CoursService coursService;
+    //@Autowired
+    private final CoursService coursService;
     @PostMapping
     public void add(Cours c){
         coursService.add(c);

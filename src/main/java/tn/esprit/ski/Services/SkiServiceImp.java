@@ -1,5 +1,6 @@
 package tn.esprit.ski.Services;
 
+import lombok.RequiredArgsConstructor;
 import org.aspectj.bridge.IMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,13 +21,14 @@ import java.util.List;
 import java.util.Set;
 
 @Service
+@RequiredArgsConstructor
 public class SkiServiceImp implements SkiService{
-    @Autowired
-    private SkiRepository skiRepository ;
-    @Autowired
-    private PisteRepository pisteRepository;
-    @Autowired
-    private AbonnementRepository abonnementRepository;
+    //@Autowired
+    private final SkiRepository skiRepository ;
+    //@Autowired
+    private final PisteRepository pisteRepository;
+    //@Autowired
+    private final AbonnementRepository abonnementRepository;
 
     @Override
     @Transactional

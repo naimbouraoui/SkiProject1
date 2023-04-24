@@ -1,5 +1,6 @@
 package tn.esprit.ski.Controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.ski.Services.MoniService;
@@ -9,9 +10,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/moniteur")
+@RequiredArgsConstructor
 public class MoniteurController {
-    @Autowired
-    private MoniService moniService;
+    //@Autowired
+    private final MoniService moniService;
     @PostMapping
     public void add(Moniteur m){
         moniService.add(m);
