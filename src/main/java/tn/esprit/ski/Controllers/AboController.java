@@ -1,5 +1,6 @@
 package tn.esprit.ski.Controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +14,11 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/abonnement")
+@RequiredArgsConstructor
 public class AboController {
     // http://localhost:9090/abonnement
-    @Autowired
-    private AbonService abonService;
+    //@Autowired
+    private final AbonService abonService;
     @PostMapping
     public void add(@RequestBody Abonnement a){
         abonService.add(a);

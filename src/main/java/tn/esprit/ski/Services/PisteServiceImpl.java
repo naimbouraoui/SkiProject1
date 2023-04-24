@@ -1,5 +1,6 @@
 package tn.esprit.ski.Services;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.ski.Repositories.PisteRepository;
@@ -8,9 +9,10 @@ import tn.esprit.ski.entities.Piste;
 
 import java.util.List;
 @Service
+@RequiredArgsConstructor
 public class PisteServiceImpl implements PisteService{
-    @Autowired
-    private PisteRepository pisteRepository;
+    //@Autowired
+    private final PisteRepository pisteRepository;
     @Override
     public void add(Piste p){
         pisteRepository.save(p);

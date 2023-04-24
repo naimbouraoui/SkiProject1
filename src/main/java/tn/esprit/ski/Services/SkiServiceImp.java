@@ -1,7 +1,9 @@
 package tn.esprit.ski.Services;
 
+import lombok.RequiredArgsConstructor;
 import org.aspectj.bridge.IMessage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import org.springframework.web.servlet.theme.CookieThemeResolver;
@@ -20,13 +22,14 @@ import java.util.List;
 import java.util.Set;
 
 @Service
+@RequiredArgsConstructor
 public class SkiServiceImp implements SkiService{
-    @Autowired
-    private SkiRepository skiRepository ;
-    @Autowired
-    private PisteRepository pisteRepository;
-    @Autowired
-    private AbonnementRepository abonnementRepository;
+    //@Autowired
+    private final SkiRepository skiRepository ;
+    //@Autowired
+    private final PisteRepository pisteRepository;
+    //@Autowired
+    private final AbonnementRepository abonnementRepository;
 
     @Override
     @Transactional
@@ -111,4 +114,12 @@ public class SkiServiceImp implements SkiService{
 
     //     return null;
     // }
+    @Transactional
+    //@Scheduled(fixedDelay = 60000)
+    //@Scheduled(fixedRate = 60000)
+    //@Scheduled(cron = "second, minute, hour, day of month, month, day(s) of week")
+    @Scheduled(cron = "0 0 1 21 * * ?")
+    public void testScheduler(){
+    skiRepository.findById(1L);
+    }
 }

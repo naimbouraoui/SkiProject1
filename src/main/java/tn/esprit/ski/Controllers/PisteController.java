@@ -1,5 +1,6 @@
 package tn.esprit.ski.Controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.ski.Services.PisteService;
@@ -9,9 +10,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/piste")
+@RequiredArgsConstructor
 public class PisteController {
-    @Autowired
-    private PisteService pisteService;
+    //@Autowired
+    private final PisteService pisteService;
     @PostMapping
     public void add(Piste p){
         pisteService.add(p);

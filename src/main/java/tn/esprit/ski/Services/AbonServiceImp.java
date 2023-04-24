@@ -1,5 +1,7 @@
 package tn.esprit.ski.Services;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.ski.Repositories.AbonnementRepository;
@@ -11,9 +13,11 @@ import java.util.List;
 import java.util.Set;
 
 @Service
+@RequiredArgsConstructor
+@Slf4j
 public class AbonServiceImp implements AbonService {
-    @Autowired
-    private AbonnementRepository abonnementRepository;
+    //@Autowired
+    private final AbonnementRepository abonnementRepository;
 
     @Override
     public void add(Abonnement a){
@@ -25,6 +29,8 @@ public class AbonServiceImp implements AbonService {
     }
     @Override
     public List<Abonnement> getAll(){
+        log.info("in method : getAll");
+        //log.info("out method : " + getAll());
         return (List<Abonnement>) abonnementRepository.findAll();
     }
     @Override

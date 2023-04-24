@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Getter
 @Setter
@@ -12,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-public class Inscription {
+public class Inscription implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long numInscription;

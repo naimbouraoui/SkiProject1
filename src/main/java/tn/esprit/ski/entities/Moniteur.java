@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-public class Moniteur {
+public class Moniteur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long numMoniteur;

@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Getter
@@ -13,7 +14,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-public class Abonnement {
+public class Abonnement implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long numAbo;

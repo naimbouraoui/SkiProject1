@@ -1,5 +1,6 @@
 package tn.esprit.ski.Services;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -13,9 +14,10 @@ import tn.esprit.ski.entities.Skieur;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class InscriServiceImp implements InscriService{
-    @Autowired
-    private InscriRepository inscriRepository;
+    //@Autowired
+    private final InscriRepository inscriRepository;
     @Autowired
     private SkiRepository skiRepository;
     @Autowired
